@@ -1,0 +1,71 @@
+{
+  "name": "desafio-beck-end",
+  "version": "1.0.0",
+  "description": "Desafio beck-end para bossabox",
+  "main": "index.js",
+  "scripts": {
+    "build": "node --max_old_space_size=4096 ./node_modules/typescript/lib/tsc.js -p tsconfig.json",
+    "check": "tsc -p tsconfig.spec.json --noEmit",
+    "check-prettier": "prettier -c {src,spec}/*.ts {src,spec}/**/*.ts {src,spec}/**/**/*.ts {src,spec}/**/**/**/*.ts",
+    "fix-prettier": "prettier --write {src,spec}/*.ts {src,spec}/**/*.ts {src,spec}/**/**/*.ts {src,spec}/**/**/**/*.ts",
+    "lint": "tslint -c tslint.json -p tsconfig.spec.json",
+    "test": "spec/run.sh",
+    "start": "node --max_old_space_size=4096 ./node_modules/typescript/lib/tsc.js -p tsconfig.json && node out/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@sentry/types": "^5.14.2",
+    "@sentry/node": "^5.11.1",
+    "@types/body-parser": "^1.19.0",
+    "@types/cors": "^2.8.6",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.3",
+    "@types/hapi__joi": "^16.0.12",
+    "@types/jsonwebtoken": "^8.3.8",
+    "@types/mongoose": "^5.7.6",
+    "@types/nodemon": "^1.19.0",
+    "jest": "^25.1.0",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1",
+    "ts-jest": "^25.2.1",
+    "ts-node": "^8.6.2",
+    "tslint": "^6.1.0",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.4"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "globals": {
+      "ts-jest": {
+        "diagnostics": false,
+        "isolatedModules": true,
+        "tsConfig": "tsconfig.spec.json"
+      }
+    },
+    "globalSetup": "<rootDir>/spec/globalSetup.ts",
+    "globalTeardown": "<rootDir>/spec/globalTeardown.ts",
+    "cacheDirectory": "<rootDir>/.cache/jest/",
+    "setupFilesAfterEnv": [
+      "<rootDir>/spec/setup.ts"
+    ],
+    "preset": "ts-jest",
+    "testRegex": "/spec/suites/.*\\.tsx?$",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/spec/"
+    ]
+  }
+}
